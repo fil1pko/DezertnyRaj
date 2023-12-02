@@ -2,14 +2,16 @@
 </script>
 
 <template>
-  <header>X
+  <header>
   </header>
 
   <main>
-    <TheWelcome />
   </main>
+
+  <footer>
+  </footer>
 </template>
 
-<style scoped>
+<style>
 
 </style>
