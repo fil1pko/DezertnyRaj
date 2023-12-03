@@ -1,5 +1,7 @@
 <script setup>
   import navbar from './components/navbar.vue'
+  import home from './components/home.vue'
+  import markk from './components/mark.vue'
 </script>
 
 <template>
@@ -8,6 +10,8 @@
   </header>
 
   <main>
+    <home />
+    <markk />
   </main>
 
   <footer>
