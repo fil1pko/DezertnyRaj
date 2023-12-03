@@ -14,11 +14,10 @@
     .mark{
         font-family: $charis;
         width: 100%;
-        display: flex;
-        justify-content: center;
-        padding-top: 20px;
+        @include flex;
+        padding-top: 1.042vw;
         small{
-            font-size: 13px;
+            font-size: 0.677vw;
             a{
                 font-weight: bold;
                 text-decoration: none;

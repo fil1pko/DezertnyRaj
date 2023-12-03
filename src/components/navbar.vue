@@ -21,15 +21,10 @@ export default {
     nav{
         position: relative;
         top: clamp(0.6rem,0.729vw,2.2rem); 
-        display: -webkit-box; 
-        display: -ms-flexbox; 
-        display: flex;
+        @include flex;
         -webkit-box-pack: justify;
             -ms-flex-pack: justify;
                 justify-content: space-between;
-        -webkit-box-align: center;
-            -ms-flex-align: center;
-                align-items: center;
         max-width: clamp(19rem,96.979vw,232.688rem);
         margin: 0 auto;
         h1{

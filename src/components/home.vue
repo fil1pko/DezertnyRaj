@@ -35,54 +35,48 @@
     @import '../assets/style/main.scss';
 
     #home{
-        max-width: clamp(19rem,97.979vw,232.688rem);
+        max-width: clamp(19rem,97.979vw,238.688rem);
         margin: 0 auto;    
         display: flex;
         justify-content: space-between;
-        height: 750px;
-        margin-top: 40px;
+        height: 39.063vw;
+        margin-top: 2.083vw;
         .choice-wraper{
-            width: 930px;
+            width: 48.438vw;
             position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            @include flex;
             .overlay{
                 position: absolute;
                 font-family: $charis;
                 width: 100%;
                 height: 100%;
                 opacity: 0;
-                display: flex;
-                justify-content: center;
-                align-items: center;
+                @include flex;
                 transition: 0.8s;
                 &:hover{
                     opacity: 1;
                 }
                 article{
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-
+                    @include flex;
                     flex-direction: column;
                     max-width: 60%;
-                    gap: 6px;
+                    gap: 0.313vw;
                     h2{
                         font-weight: bold;
-                        font-size: 30px;
+                        font-size: 1.563vw;
                     }
                     p{
                         text-align: center;
+                        font-size: 0.833vw;
                     }
                     .line{
-                        height: 1px;
-                        width: 81px;
+                        height: 0.052vw;
+                        width: 4.219vw;
                         background-color: $black;
                     }
                     .line2{
-                        height: 1px;
-                        width: 81px;
+                        height: 0.052vw;
+                        width: 4.219vw;
                         background-color: $white;
                     }
                 }
@@ -101,6 +95,11 @@
         }
         .second{
             background-color: $redBg;
+        }
+    }
+    @media only screen and (max-width: 1024px){
+        #home{
+            flex-direction: column;
         }
     }
 </style>
