@@ -4,7 +4,7 @@
 
 <template>
     <section id="home">
-        <a class="choice-wraper first" href="">
+        <div class="choice-wraper first">
             <div class="overlay green">
                 <article>
                     <h2>Tortová Slasť</h2>
@@ -14,19 +14,19 @@
             </div>
 
             <img src="../assets/pictures/cake.png" alt="Torta">
-        </a>
+        </div>
 
-        <a class="choice-wraper second" href="">
+        <div class="choice-wraper second">
             <div class="overlay red">
                 <article>
                     <h2>Makrónkový Pôvab</h2>
-                    <div class="line"></div>
+                    <div class="line2"></div>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi facilis quia soluta laudantium numquam, libero accusamus illo. Eligendi iusto animi nostrum molestiae ea at eos minima quis sit, consequuntur vel?</p>
                 </article>
             </div>
 
             <img src="../assets/pictures/macron.png" alt="Makrónka">
-        </a>
+        </div>
     </section>
 </template>
 
@@ -49,27 +49,51 @@
             align-items: center;
             .overlay{
                 position: absolute;
+                font-family: $charis;
                 width: 100%;
                 height: 100%;
                 opacity: 0;
-                color: $black;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 transition: 0.8s;
-                h2{
-                    font-weight: bold;
-                    font-size: 30px;
-                }
                 &:hover{
                     opacity: 1;
                 }
+                article{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    flex-direction: column;
+                    max-width: 60%;
+                    gap: 6px;
+                    h2{
+                        font-weight: bold;
+                        font-size: 30px;
+                    }
+                    p{
+                        text-align: center;
+                    }
+                    .line{
+                        height: 1px;
+                        width: 81px;
+                        background-color: $black;
+                    }
+                    .line2{
+                        height: 1px;
+                        width: 81px;
+                        background-color: $white;
+                    }
+                }
             }
             .red{
-                background: $redBg;
+                background: $redBg2;
+                color: $white;
             }
             .green{
-                background: $green;
+                background: $green2;
+                color: $black;
             }
         }
         .first{
