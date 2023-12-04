@@ -1,7 +1,17 @@
 <script setup>
+  import { ref } from 'vue';
   import navbar from './components/navbar.vue'
   import home from './components/home.vue'
   import markk from './components/mark.vue'
+  import macronConfig from './components/configMacron.vue'
+
+  const showHome = ref(true);
+  const showMacron = ref(false);
+
+  const handleHomeButtonClick = () => {
+    showHome.value = false;
+    showMacron.value = true;
+  };
 </script>
 
 <template>
@@ -10,7 +20,8 @@
   </header>
 
   <main>
-    <home />
+    <home v-if="showHome" @buttonClick="handleHomeButtonClick" />
+    <macronConfig v-if="showMacron" />
     <markk />
   </main>
 

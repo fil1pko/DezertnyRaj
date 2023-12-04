@@ -1,5 +1,11 @@
 <script>
-
+    export default {
+        methods: {
+            handleClick() {
+            this.$emit('buttonClick');
+            },
+        },
+    };
 </script>
 
 <template>
@@ -32,7 +38,7 @@
 
         <!-- macrons -->
         <div class="choice-wraper second">
-            <div class="overlay red">
+            <div @click="handleClick" class="overlay red">
                 <article>
                     <h2>Makrónkový Pôvab</h2>
                     <div class="line2"></div>
@@ -67,8 +73,7 @@
         margin: 0 auto;    
         display: flex;
         justify-content: space-between;
-        height: 39.063vw;
-        max-height: 235.125rem;
+        height: 39.063vw; //235.125rem
         margin-top: 2.083vw; //5rem
         .choice-wraper{
             width: 48.438vw; //116.25rem

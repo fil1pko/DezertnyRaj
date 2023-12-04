@@ -10,7 +10,7 @@ export default {
 
         <h1>Dezertný raj <br> navštívi váš kraj</h1>
 
-        <a href=""><img class="instagram" src="../assets/pictures/instagram.svg" alt="Instagram logo"></a>
+        <a href="" target="_blank"><img class="instagram" src="../assets/pictures/instagram.svg" alt="Instagram logo"></a>
     </nav>
 </template>
 
