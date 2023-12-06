@@ -2,8 +2,11 @@
     export default {
         methods: {
             handleClick() {
-            this.$emit('buttonClick');
+                this.$emit('buttonClick')
             },
+            handleClick2(){
+               this.$emit('buttonClick2') 
+            }
         },
     };
 </script>
@@ -11,7 +14,7 @@
 <template>
     <section id="home">
         <div class="choice-wraper first">
-            <div class="overlay green">
+            <div @click="handleClick2" class="overlay green">
                 <article>
                     <h2>Tortová Slasť</h2>
                     <div class="line"></div>
