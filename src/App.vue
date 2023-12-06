@@ -12,6 +12,11 @@
     showHome.value = false;
     showMacron.value = true;
   };
+
+  const handleMacronButtonClick = () => {
+    showHome.value = true;
+    showMacron.value = false;
+  };
 </script>
 
 <template>
@@ -21,7 +26,7 @@
 
   <main>
     <home v-if="showHome" @buttonClick="handleHomeButtonClick" />
-    <macronConfig v-if="showMacron" />
+    <macronConfig v-if="showMacron" @buttonClick="handleMacronButtonClick"/>
     <markk />
   </main>
 
