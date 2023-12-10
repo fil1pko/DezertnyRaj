@@ -10,11 +10,11 @@
 
 <template>
     <section id="macronConfigurator">
-        <div @click="handleClick" style="width: 30px; height: 30px; background-color: red; cursor: pointer;">
-            <p>macron config</p>
+        <div @click="handleClick">
+            <img src="../assets/pictures/goBack.svg" alt="Ísť späť">
         </div>
 
-        <div class="choice-img" style="background-color: red;">
+        <div class="choice-img">
             <img src="../assets/pictures/macron.png" alt="Tvoja volba">
         </div>
 
@@ -33,7 +33,7 @@
                 <div class="button small"> M </div>
                 <div class="button small"> S </div>
                 <div class="button small teaser"> Teaser </div>
-                <p>Počet kusov v balení: <b>30</b></p>
+                <p style="padding-top: 0;">Počet kusov v balení: <b>30</b></p>
             </div>
 
             <!-- volba prichute -->
@@ -42,19 +42,19 @@
             </p>
             <div class="button-wraper">
                 <div class="button big">
-                    <h6>ČERVENÁ</h6>
+                    <h6 id="red">ČERVENÁ</h6>
                     <small>Lesná zmes</small>
                 </div>
                 <div class="button big">
-                    <h6>HNEDÁ</h6>
+                    <h6 id="brown">HNEDÁ</h6>
                     <small>Káva</small>
                 </div>
                 <div class="button big">
-                    <h6>BIELA</h6>
+                    <h6 id="white">BIELA</h6>
                     <small>Karamel</small>
                 </div>
                 <div class="button big">
-                    <h6>ZELENÁ</h6>
+                    <h6 id="green">ZELENÁ</h6>
                     <small>Pistácie</small>
                 </div>
             </div>
@@ -66,12 +66,16 @@
             </p>
             <div class="button-wraper form-wraper">
                 <form>
-                    <input type="mail" class="longer">
-                    <input type="text" class="shorter">
+                    <div class="longer">
+                        <input class="custom-input" type="mail" placeholder="examplemail@gmail.com">
+                    </div>
+                    <div class="shorter">
+                        <input class="custom-input2" type="text" placeholder="4+5">
+                    </div>
+
                     <button type="submit">Objednať</button>
                 </form>
             </div>
-
             <p>
                 Chceš to nakombinovať úple podľa seba? Tu nám napíš svoju predstavu.    
             </p>
@@ -86,19 +90,23 @@
 
     #macronConfigurator{
         width: 100%;
-        justify-content: center;
+        @include flex;
+        gap: 50px;
         margin: 0 auto;    
-        display: flex;
         height: 39.063vw; //235.125rem
-        margin-top: 2.083vw; //5rem
+        margin-bottom: 2.083vw; 
         article{
-            background-color: lightgreen;
             font-family: $charis;
+            text-align: justify;
+            max-width: 28%;
+            align-self: center;
             p{
                 font-size: 0.833vw;
+                padding-top: 30px;
             }
             .button-wraper{
                 display: flex;
+                justify-content: space-between;
                 align-items: center;
                 .button{
                     @include flex;
@@ -106,9 +114,22 @@
                     background-repeat: no-repeat;
                     background-size: contain;
                     cursor: pointer;
+                    #red{
+                        color: $redText;
+                    }
+                    #brown{
+                        color: $brown;
+                    }
+                    #white{
+                        color: $black;
+                    }
+                    #green{
+                        color: $greenText;
+                    }
                 }
                 h6{
-                    font-size: 0.833vw;
+                    font-weight: bold;
+                    font-size: 0.933vw;
                 }
                 .small{
                     width: 70px;
@@ -122,22 +143,47 @@
                 }
             }
             .form-wraper{
-                flex-direction: column;
                 form{
+                    display: flex;
+                    align-items: center;
                     .longer{
-                        all: unset;
-                        width: 280px;
-                        height: 44px;
                         background-image: url('../assets/pictures/orbBorderLong.svg');
                         background-repeat: no-repeat;
-                        background-size: cover;
+                        background-size: cover; 
+                        @include flex;
+
+                        width: 280px;
+                        height: 48px;
+                        .custom-input{
+                            all: unset;
+                        }
                     }
                     .shorter{
-                        all: unset;
-                        height: 44px;
-                        background-image: url('../assets/pictures/orbBorderLong2.svg');
+                        background-image: url('../assets/pictures/orbBorder.svg');
                         background-repeat: no-repeat;
-                        background-size: cover;
+                        background-size: cover; 
+                        @include flex;
+
+                        width: 73px;
+                        height: 53px;
+                        .custom-input2{
+                            font-size: 0.733vw !important;
+                            all: unset;
+                            width: 40%;
+                        }
+                    }
+
+                    button{
+                        all: unset;
+                        background-image: url('../assets/pictures/orbBorder.svg');
+                        background-repeat: no-repeat;
+                        background-size: cover; 
+                        @include flex;
+                        cursor: pointer;
+                        font-size: 12px;
+                        font-weight: bold;
+                        width: 73px;
+                        height: 53px;
                     }
                 }
             }
