@@ -10,12 +10,14 @@
 
 <template>
     <section id="macronConfigurator">
-        <div @click="handleClick">
+        <!-- button back -->
+        <div class="goBack" @click="handleClick">
             <img src="../assets/pictures/goBack.svg" alt="Ísť späť">
         </div>
 
+        <!-- spot with actual choice -->
         <div class="choice-img">
-            <img src="../assets/pictures/macron.png" alt="Tvoja volba">
+            <img src="../assets/pictures/macron.png" width="100px" alt="Tvoja volba">
         </div>
 
         <article>
@@ -29,10 +31,10 @@
                 Vyber si veľkosť.
             </p>
             <div class="button-wraper">
-                <div class="button small"> L </div>
-                <div class="button small"> M </div>
-                <div class="button small"> S </div>
-                <div class="button small teaser"> Teaser </div>
+                <div class="button small"> <p> L </p> </div>
+                <div class="button small"> <p> M </p> </div>
+                <div class="button small"> <p> S </p> </div>
+                <div class="button small teaser"> <p> Teaser </p> </div>
                 <p style="padding-top: 0;">Počet kusov v balení: <b>30</b></p>
             </div>
 
@@ -91,10 +93,16 @@
     #macronConfigurator{
         width: 100%;
         @include flex;
-        gap: 50px;
+        gap: 4.604vw;
         margin: 0 auto;    
         height: 39.063vw; //235.125rem
         margin-bottom: 2.083vw; 
+        .goBack{
+            img{
+                width: clamp(2.5rem,2.708vw,6.438rem);
+                height: auto;
+            }
+        }
         article{
             font-family: $charis;
             text-align: justify;
@@ -102,7 +110,7 @@
             align-self: center;
             p{
                 font-size: 0.833vw;
-                padding-top: 30px;
+                padding-top: 1.563vw;
             }
             .button-wraper{
                 display: flex;
@@ -114,6 +122,7 @@
                     background-repeat: no-repeat;
                     background-size: contain;
                     cursor: pointer;
+                    transition: 0.5s;
                     #red{
                         color: $redText;
                     }
@@ -126,20 +135,29 @@
                     #green{
                         color: $greenText;
                     }
+                    &:hover{
+                        opacity: 0.6;
+                    }
                 }
                 h6{
                     font-weight: bold;
                     font-size: 0.933vw;
                 }
                 .small{
-                    width: 70px;
-                    height: 49px;
+                    width: 3.646vw;
+                    height: 2.552vw;
+                    p{
+                        padding-top: 0;
+                    }
                 }
 
                 .big{
-                    width: 130px;
-                    height: 91px;
+                    width: 6.771vw;
+                    height: 4.74vw;
                     flex-direction: column;
+                    small{
+                        font-size: 0.690vw;
+                    }
                 }
             }
             .form-wraper{
@@ -152,8 +170,8 @@
                         background-size: cover; 
                         @include flex;
 
-                        width: 280px;
-                        height: 48px;
+                        width: 14.583vw;
+                        height: 2.5vw;
                         .custom-input{
                             all: unset;
                         }
@@ -164,8 +182,8 @@
                         background-size: cover; 
                         @include flex;
 
-                        width: 73px;
-                        height: 53px;
+                        width: 3.802vw;
+                        height: 2.76vw;
                         .custom-input2{
                             font-size: 0.733vw !important;
                             all: unset;
@@ -180,10 +198,14 @@
                         background-size: cover; 
                         @include flex;
                         cursor: pointer;
-                        font-size: 12px;
+                        font-size: 0.625vw !important;
                         font-weight: bold;
-                        width: 73px;
-                        height: 53px;
+                        width: 3.802vw;
+                        height: 2.76vw;
+                        transition: 0.5s;
+                        &:hover{
+                            opacity: 0.6;
+                        }
                     }
                 }
             }
@@ -191,6 +213,13 @@
         .choice-img{
             display: flex;
             align-items: center;
+        }
+        @media only screen and (max-width: 1024px){
+            flex-direction: column;
+            height: 100%;
+            article{
+                max-width: 80%;
+            }
         }
     }
 </style>

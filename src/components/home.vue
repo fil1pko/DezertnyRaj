@@ -14,7 +14,8 @@
 <template>
     <section id="home">
         <div class="choice-wraper first">
-            <div @click="handleClick2" class="overlay green">
+            <!-- @click="handleClick2" -->
+            <div class="overlay green"> 
                 <article>
                     <h2>Tortová Slasť</h2>
                     <div class="line"></div>
