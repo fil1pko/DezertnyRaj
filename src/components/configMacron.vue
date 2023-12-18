@@ -1,27 +1,43 @@
 <script>
     import emailjs from '@emailjs/browser';
+    import { ref } from 'vue'
 
     export default {
+        setup(){
+            const userEmail = ref('');
+
+            return {
+                userEmail,
+            };
+        },
         methods: {
             handleClick() {
-            this.$emit('buttonClick');
+                this.$emit('buttonClick');
             },
+
+            updateVelkost(value) {
+                this.vyber.velkost = value;
+                console.log(this.vyber);
+            },
+
+            updatePrichut(value){
+                this.vyber.prichut = value;
+            }
         },
         data() {
             return {
+                
                 num1: Math.floor(Math.random() * 10),
                 num2: Math.floor(Math.random() * 10),
-                userAnswer: '',
-                resultMessage: '',
-
-                myObject: {
-                    velkost: 'value1',
-                    prichut: 'value2',
-
+        
+                vyber: {
+                    velkost: '',
+                    prichut: '',
+                    userEmail: this.userEmail,
                 },
+
             };
         },
-
 
     };
 </script>
@@ -49,10 +65,10 @@
                 Vyber si veľkosť.
             </p>
             <div class="button-wraper">
-                <div class="button small"> <p> L </p> </div>
-                <div class="button small"> <p> M </p> </div>
-                <div class="button small"> <p> S </p> </div>
-                <div class="button small teaser"> <p> Teaser </p> </div>
+                <button @click="updateVelkost('L')" class="button small"> <p> L </p> </button>
+                <button @click="updateVelkost('M')" class="button small"> <p> M </p> </button>
+                <button @click="updateVelkost('S')" class="button small"> <p> S </p> </button>
+                <button @click="updateVelkost('teaser')" class="button small teaser"> <p> Teaser </p> </button>
                 <p style="padding-top: 0;">Počet kusov v balení: <b>30</b></p>
             </div>
 
@@ -61,19 +77,19 @@
                 Vyber si nejakú z našich vychytených príchutí.
             </p>
             <div class="button-wraper">
-                <div class="button big">
+                <div @click="updatePrichut('lesnaZmes')" class="button big">
                     <h6 id="red">ČERVENÁ</h6>
                     <small>Lesná zmes</small>
                 </div>
-                <div class="button big">
+                <div @click="updatePrichut('kava')" class="button big">
                     <h6 id="brown">HNEDÁ</h6>
                     <small>Káva</small>
                 </div>
-                <div class="button big">
+                <div @click="updatePrichut('karamel')" class="button big">
                     <h6 id="white">BIELA</h6>
                     <small>Karamel</small>
                 </div>
-                <div class="button big">
+                <div @click="updatePrichut('pistacie')" class="button big">
                     <h6 id="green">ZELENÁ</h6>
                     <small>Pistácie</small>
                 </div>
@@ -87,13 +103,13 @@
             <div class="button-wraper form-wraper">
                 <form>
                     <div class="longer">
-                        <input class="custom-input" type="mail" placeholder="examplemail@gmail.com">
+                        <input v-model="vyber.userEmail" class="custom-input" type="mail" placeholder="examplemail@gmail.com">
                     </div>
                     <div class="shorter">
-                        <input class="custom-input2" type="text" placeholder="4+5">
+                        <input class="custom-input2" type="text" :placeholder="`${num1}+${num2}`">
                     </div>
 
-                    <button type="submit">Objednať</button>
+                    <button type="submit" value="Send">Objednať</button>
                 </form>
             </div>
             <p>
@@ -135,6 +151,7 @@
                 justify-content: space-between;
                 align-items: center;
                 .button{
+                    all: unset;
                     @include flex;
                     background-image: url('../assets/pictures/orbBorder.svg');
                     background-repeat: no-repeat;
