@@ -22,7 +22,23 @@
 
             updatePrichut(value){
                 this.vyber.prichut = value;
-            }
+            },
+            sendEmail(){
+                const emailData = {
+                    velkost: this.vyber.velkost,
+                    prichut: this.vyber.prichut,
+                    userEmail: this.vyber.userEmail,
+                };
+
+                emailjs.send('service_h0dylce', 'template_lio20py', emailData, 'MNLw0s3jywRA1ySnU' )
+                        .then((response) => {
+                            console.log('E-mail odeslán:', response);
+                        },
+                        (error) => {
+                            console.log('Chyba při odesílání e-mailu:', error);
+                        }
+                    );
+            }            
         },
         data() {
             return {
@@ -101,15 +117,15 @@
                 Zadaj mail, v ktorom sa dohodneme na detailoch a dodaní, zároveň žiadame o vyriešenie jednoduchého príkladu aby sme si overrili, že nie si robot. 
             </p>
             <div class="button-wraper form-wraper">
-                <form>
+                <form  @submit.prevent="sendEmail">
                     <div class="longer">
-                        <input v-model="vyber.userEmail" class="custom-input" type="mail" placeholder="examplemail@gmail.com">
+                        <input v-model="vyber.userEmail" class="custom-input" type="mail" placeholder="examplemail@gmail.com" required>
                     </div>
                     <div class="shorter">
                         <input class="custom-input2" type="text" :placeholder="`${num1}+${num2}`">
                     </div>
 
-                    <button type="submit" value="Send">Objednať</button>
+                    <button type="submit">Objednať</button>
                 </form>
             </div>
             <p>
