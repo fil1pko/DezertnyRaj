@@ -1,10 +1,28 @@
 <script>
+    import emailjs from '@emailjs/browser';
+
     export default {
         methods: {
             handleClick() {
             this.$emit('buttonClick');
             },
         },
+        data() {
+            return {
+                num1: Math.floor(Math.random() * 10),
+                num2: Math.floor(Math.random() * 10),
+                userAnswer: '',
+                resultMessage: '',
+
+                myObject: {
+                    velkost: 'value1',
+                    prichut: 'value2',
+
+                },
+            };
+        },
+
+
     };
 </script>
 
