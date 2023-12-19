@@ -46,7 +46,7 @@
                 <article>
                     <h2>Makrónkový Pôvab</h2>
                     <div class="line2"></div>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi facilis quia soluta laudantium numquam, libero accusamus illo. Eligendi iusto animi nostrum molestiae ea at eos minima quis sit, consequuntur vel?</p>
+                    <p>Ochutnajte lahodné domáce makronky z našej miestnej pekárne! Každý kúsok je ručne vyrobený s láskou a starostlivosťou, aby ste si užili autentický zážitok. </p>
                 </article>
             </div>
             <div class="content-wraper">

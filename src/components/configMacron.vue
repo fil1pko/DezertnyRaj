@@ -93,7 +93,7 @@
         <article>
             <!-- intro -->
             <p>
-                Nakonfiguruj si vlastnú veľkosť balenia, príchuť alebo dokonca aj farbu! Pokiaľ by si mal nejakú špeciálnu požiadavku alebo máš záujem objednať si<br>väčšie množstvo napíš nám správu nie je nič s čím si hravo neporadíme.  
+                Nakonfiguruj si vlastnú veľkosť balenia, príchuť alebo dokonca aj farbu!
             </p>
 
             <!-- volba velkosti -->
@@ -126,7 +126,12 @@
                     <p> Teaser </p> 
                 </button>
 
-                <p style="padding-top: 0;">Počet kusov v balení: <b>30</b></p>
+                <p style="padding-top: 0;">Počet kusov v balení: 
+                    <b v-if="vyber.velkost === 'L'">30</b> 
+                    <b v-if="vyber.velkost === 'M'">20</b> 
+                    <b v-if="vyber.velkost === 'S'">10</b> 
+                    <b v-if="vyber.velkost === 'teaser'">4</b>
+                </p>
             </div>
 
             <!-- volba prichute -->
@@ -178,7 +183,7 @@
 
             <!-- email set -->
             <p>
-                Zadaj mail, v ktorom sa dohodneme na detailoch a dodaní, zároveň žiadame o vyriešenie jednoduchého príkladu aby sme si overrili, že nie si robot. 
+                Zadaj mail, v ktorom sa dohodneme na detailoch, zároveň žiadame o vyriešenie jednoduchého príkladu aby sme si overrili, že nie si robot. 
             </p>
             <div class="button-wraper form-wraper">
                 <form id="form" @submit.prevent="checkAnswerAndSendEmail">
