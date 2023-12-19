@@ -17,11 +17,16 @@
 
             updateVelkost(value) {
                 this.vyber.velkost = value;
+                if (this.vyber.velkost === "teaser"){
+                    this.vyber.prichut = '';
+                }
                 console.log(this.vyber);
             },
 
             updatePrichut(value){
-                this.vyber.prichut = value;
+                if (this.vyber.velkost !== "teaser"){
+                    this.vyber.prichut = value;
+                }
             },
             sendEmail(){
                 const emailData = {
