@@ -28,6 +28,17 @@
                     this.vyber.prichut = value;
                 }
             },
+
+            checkAnswerAndSendEmail() {
+                const correctAnswer = this.num1 + this.num2;
+                if (parseInt(this.userAnswer, 10) === correctAnswer) {
+                    this.resultMessage = 'Správne! Nie si robot.';
+                    this.sendEmail();
+                } else {
+                    this.resultMessage = 'Nesprávne. Skús to znova.';
+                }
+            },
+
             sendEmail(){
                 const emailData = {
                     velkost: this.vyber.velkost,
@@ -38,6 +49,9 @@
                 emailjs.send('service_h0dylce', 'template_lio20py', emailData, 'MNLw0s3jywRA1ySnU' )
                         .then((response) => {
                             console.log('E-mail odeslán:', response);
+                            document.getElementById('form').reset();
+                            this.vyber.prichut = '';
+                            this.vyber.velkost = '';
                         },
                         (error) => {
                             console.log('Chyba při odesílání e-mailu:', error);
@@ -50,7 +64,8 @@
                 
                 num1: Math.floor(Math.random() * 10),
                 num2: Math.floor(Math.random() * 10),
-        
+                userAnswer: '',
+                resultMessage: '',
                 vyber: {
                     velkost: '',
                     prichut: '',
@@ -166,17 +181,18 @@
                 Zadaj mail, v ktorom sa dohodneme na detailoch a dodaní, zároveň žiadame o vyriešenie jednoduchého príkladu aby sme si overrili, že nie si robot. 
             </p>
             <div class="button-wraper form-wraper">
-                <form  @submit.prevent="sendEmail">
+                <form id="form" @submit.prevent="checkAnswerAndSendEmail">
                     <div class="longer">
                         <input v-model="vyber.userEmail" class="custom-input" type="mail" placeholder="examplemail@gmail.com" required>
                     </div>
                     <div class="shorter">
-                        <input class="custom-input2" type="text" :placeholder="`${num1}+${num2}`">
+                        <input class="custom-input2" v-model="userAnswer" type="text" :placeholder="`${num1}+${num2}`">
                     </div>
 
                     <button type="submit">Objednať</button>
                 </form>
             </div>
+            <small v-if="resultMessage">{{ resultMessage }}</small>
             <p>
                 Chceš to nakombinovať úple podľa seba? Tu nám napíš svoju predstavu.    
             </p>
