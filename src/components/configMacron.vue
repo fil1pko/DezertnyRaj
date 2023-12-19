@@ -81,10 +81,31 @@
                 Vyber si veľkosť.
             </p>
             <div class="button-wraper">
-                <button @click="updateVelkost('L')" class="button small"> <p> L </p> </button>
-                <button @click="updateVelkost('M')" class="button small"> <p> M </p> </button>
-                <button @click="updateVelkost('S')" class="button small"> <p> S </p> </button>
-                <button @click="updateVelkost('teaser')" class="button small teaser"> <p> Teaser </p> </button>
+                <button 
+                    @click="updateVelkost('L')" 
+                    :class="{ 'active': vyber.velkost === 'L' }" 
+                    class="button small"> 
+                    <p> L </p> 
+                </button>
+                <button 
+                    @click="updateVelkost('M')" 
+                    :class="{ 'active': vyber.velkost === 'M' }" 
+                    class="button small"> 
+                    <p> M </p> 
+                </button>
+                <button 
+                    @click="updateVelkost('S')" 
+                    :class="{ 'active': vyber.velkost === 'S' }" 
+                    class="button small"> 
+                    <p> S </p> 
+                </button>
+                <button 
+                    @click="updateVelkost('teaser')" 
+                    :class="{ 'active': vyber.velkost === 'teaser' }" 
+                    class="button small teaser"> 
+                    <p> Teaser </p> 
+                </button>
+
                 <p style="padding-top: 0;">Počet kusov v balení: <b>30</b></p>
             </div>
 
@@ -93,19 +114,42 @@
                 Vyber si nejakú z našich vychytených príchutí.
             </p>
             <div class="button-wraper">
-                <div @click="updatePrichut('lesnaZmes')" class="button big">
+                <div 
+                    @click="updatePrichut('lesnaZmes')"  
+                    :class="{ 'active': vyber.prichut === 'lesnaZmes' && vyber.velkost !== 'teaser'}" 
+                    class="button big">
+
+                    <!-- button text -->
                     <h6 id="red">ČERVENÁ</h6>
                     <small>Lesná zmes</small>
                 </div>
-                <div @click="updatePrichut('kava')" class="button big">
+
+                <div 
+                    @click="updatePrichut('kava')" 
+                    :class="{ 'active': vyber.prichut === 'kava' && vyber.velkost !== 'teaser'}" 
+                    class="button big">
+
+                    <!-- button text -->
                     <h6 id="brown">HNEDÁ</h6>
                     <small>Káva</small>
                 </div>
-                <div @click="updatePrichut('karamel')" class="button big">
+
+                <div 
+                    @click="updatePrichut('karamel')"
+                    :class="{ 'active': vyber.prichut === 'karamel' && vyber.velkost !== 'teaser'}"  
+                    class="button big">
+
+                    <!-- button text -->
                     <h6 id="white">BIELA</h6>
                     <small>Karamel</small>
                 </div>
-                <div @click="updatePrichut('pistacie')" class="button big">
+
+                <div 
+                    @click="updatePrichut('pistacie')" 
+                    :class="{ 'active': vyber.prichut === 'pistacie' && vyber.velkost !== 'teaser'}" 
+                    class="button big">
+
+                    <!-- button text -->
                     <h6 id="green">ZELENÁ</h6>
                     <small>Pistácie</small>
                 </div>
@@ -271,6 +315,11 @@
             article{
                 max-width: 80%;
             }
+        }
+
+        .active{
+            scale: 0.95 !important;
+            opacity: 0.5 !important;
         }
     }
 </style>
