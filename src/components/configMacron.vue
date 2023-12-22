@@ -49,6 +49,7 @@
                 emailjs.send('service_h0dylce', 'template_lio20py', emailData, 'MNLw0s3jywRA1ySnU' )
                         .then((response) => {
                             console.log('E-mail odeslán:', response);
+                            
                             document.getElementById('form').reset();
                             this.vyber.prichut = '';
                             this.vyber.velkost = '';
@@ -91,15 +92,12 @@
         </div>
 
         <article>
-            <!-- intro -->
-            <p>
-                Nakonfiguruj si vlastnú veľkosť balenia, príchuť alebo dokonca aj farbu!
-            </p>
+            <!-- heading -->
+            <h2>Macron Configurator</h2>
+            <p style="padding-top: 0;">Nakonfiguruj si vlastnú veľkosť balenia, príchuť alebo dokonca aj farbu!</p>
 
             <!-- volba velkosti -->
-            <p>
-                Vyber si veľkosť.
-            </p>
+            <p>Vyber si veľkosť.</p>
             <div class="button-wraper">
                 <button 
                     @click="updateVelkost('L')" 
@@ -135,9 +133,7 @@
             </div>
 
             <!-- volba prichute -->
-            <p>
-                Vyber si nejakú z našich vychytených príchutí.
-            </p>
+            <p>Vyber si nejakú z našich vychytených príchutí.</p>
             <div class="button-wraper">
                 <div 
                     @click="updatePrichut('lesnaZmes')"  
@@ -182,9 +178,7 @@
 
 
             <!-- email set -->
-            <p>
-                Zadaj mail, v ktorom sa dohodneme na detailoch, zároveň žiadame o vyriešenie jednoduchého príkladu aby sme si overrili, že nie si robot. 
-            </p>
+            <p>Zadaj mail, v ktorom sa dohodneme na detailoch, zároveň žiadame o vyriešenie jednoduchého príkladu aby sme si overrili, že nie si robot. </p>
             <div class="button-wraper form-wraper">
                 <form id="form" @submit.prevent="checkAnswerAndSendEmail">
                     <div class="longer">
@@ -194,12 +188,12 @@
                         <input class="custom-input2" v-model="userAnswer" type="text" :placeholder="`${num1}+${num2}`">
                     </div>
 
-                    <button type="submit">Objednať</button>
+                    <button type="submit">Poslať!</button>
                 </form>
             </div>
             <small v-if="resultMessage">{{ resultMessage }}</small>
             <p>
-                Chceš to nakombinovať úple podľa seba? Tu nám napíš svoju predstavu.    
+                Chceš to nakombinovať úple podľa seba? <a href="mailto:dezertnyraj@gmail.com?subject=Your%20Subject&body=Your%20Message">Tu</a> nám napíš svoju predstavu.    
             </p>
         </article>
     </section>
@@ -212,10 +206,10 @@
 
     #macronConfigurator{
         width: 100%;
+        height: 39.063vw; //235.125rem
         @include flex;
         gap: 4.604vw;
         margin: 0 auto;    
-        height: 39.063vw; //235.125rem
         margin-bottom: 2.083vw; 
         .goBack{
             img{
@@ -226,11 +220,20 @@
         article{
             font-family: $charis;
             text-align: justify;
-            max-width: 28%;
+            max-width: 31%;
             align-self: center;
+            background-color: $lightGrey;
+            padding: 40px;
             p{
                 font-size: 0.833vw;
                 padding-top: 1.563vw;
+                a{
+                    color: $black;
+                }
+            }
+            h2{
+                font-size: 2.3vw;
+                font-family: $heading;
             }
             .button-wraper{
                 display: flex;
@@ -319,7 +322,7 @@
                         background-size: cover; 
                         @include flex;
                         cursor: pointer;
-                        font-size: 0.625vw !important;
+                        font-size: 0.695vw !important;
                         font-weight: bold;
                         width: 3.802vw;
                         height: 2.76vw;
